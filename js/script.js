@@ -1,6 +1,8 @@
-//função anonima variaveis locais garante exsecução
+//função anonima variaveis locais garante execução
 (function () {
 	var images = [];
+
+	var flippedCards = [];
 
 	for (var i = 0; i < 16; i++) {
 			var img = {
@@ -14,6 +16,8 @@
 	StartGame();
 
 	function StartGame() {
+
+		flippedCards = [];
 
 		images = randomSort(images);
 
@@ -51,9 +55,30 @@
 			}
 
 				function flipCard() {
+
+					if(flippedCards.length < 2){
+
 					var faces = this.getElementsByClassName('face');
+
+					if (faces[0].classList.length>2) {
+						return;
+					}
+
+
+
 					faces[0].classList.toggle("flipped");
 					faces[1].classList.toggle("flipped");
+
+					flippedCards.push(this)
+				}else{
+
+					flippedCards[0].childNodes[1].classList.toggle("flipped");
+					flippedCards[0].childNodes[3].classList.toggle("flipped");
+					flippedCards[1].childNodes[1].classList.toggle("flipped");
+					flippedCards[1].childNodes[3].classList.toggle("flipped");
+
+					flippedCards = [];
 				}
+			}
 	
 }());
