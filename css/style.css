@@ -5,6 +5,7 @@
 
 body{
 	background-color: #555;
+	text-align: center;
 }
 
 #container{
@@ -56,4 +57,17 @@ body{
 
 .front.flipped{
 	transform: rotatey(0deg);
+}
+
+#modalGameOver{
+	position: absolute;
+	top:0;
+	width: 100%;
+	height: 100%
+	background-color:rgba(0,0,0,0.5);
+	z-index: -2;
+}
+
+#imgGameOver{
+	margin-top: 100px;
 }

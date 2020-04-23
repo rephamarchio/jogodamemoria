@@ -4,6 +4,8 @@
 
 	var flippedCards = [];
 
+	var modalGameOver = document.querySelector("#modalGameOver");
+
 	for (var i = 0; i < 16; i++) {
 			var img = {
 				src : "img/"+ i +".jpg",
@@ -36,6 +38,8 @@
 				 frontFaces[i].setAttribute("id",images[i].id);
 				 console.log(frontFaces[i].id);
 				}
+				modalGameOver.style.zIndex = -2;
+				modalGameOver.removeEventListener("click",StartGame,false);
 			}
 				//embaralhar cartas
 			function randomSort(oldArray) {
@@ -80,5 +84,12 @@
 					flippedCards = [];
 				}
 			}
-	
+		window.setTimeout(function(){
+			gameOver();
+		},1000);
+
+		function gameOver () {
+			 modalGameOver.style.zIndex = 10;
+			 modalGameOver.addEventListener("click",StartGame,false);
+		}
 }());
